@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/zedurak/fract_ol",
+            "binaryPath": "/home/zedurak/fract_ol/test",
+            "binaryArgs": []
+        }
+    ]
+}
