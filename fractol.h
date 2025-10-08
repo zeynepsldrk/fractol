@@ -8,10 +8,7 @@
 # include "mlx.h"
 # include "mlx_int.h"
 
-#define ARRAY_SIZE  4
-
-#define MANDELBROT  0
-#define JULIA       1
+#define ARRAY_SIZE  5
 
 #define USAGE_MSG "Usage: ./fractol <type> [options]\n" \
                   "Available types:\n" \
