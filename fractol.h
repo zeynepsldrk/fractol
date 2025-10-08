@@ -21,8 +21,7 @@
 # define WIDTH		600
 # define HEIGHT		800
 
-# define X		5
-# define Y		5
+
 
 typedef struct s_image
 {
