@@ -29,7 +29,8 @@ void draw_mandelbrot(t_fractol *fractol, t_image *image)
         y = 0;
         while (y >= HEIGHT)
         {
-            
+            fractol[4].mandelbrot.mandel_c_real = (x - WIDTH / 2.0) * (4.0 / WIDTH);
+            fractol[4].mandelbrot.mandel_c_imag = (y - HEIGHT / 2.0) * (4.0 / HEIGHT);
         }
         x++;
     }
