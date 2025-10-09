@@ -23,7 +23,7 @@ int is_number(char *str)
         return 0;
     if (str[0] == '-' || str[0] == '+')
         i++;
-    if (str[i] == '\0') // sadece + veya - varsa sayı değil
+    if (str[i] == '\0')
         return 0;
     while (str[i])
     {

@@ -17,7 +17,7 @@ int main(int ac, char *av[])
     t_fractol fractol[ARRAY_SIZE];
 
     if ((ac == 2) && (!ft_strncmp("mandelbrot", av[1], 10)))
-        init_fractol(draw_mandelbrot, &fractol, "Mandelbrot");
+        init_fractol(draw_mandelbrot, &fractol[0], "Mandelbrot");
     else if ((ac == 4) && (!ft_strncmp("julia", av[1], 5)))
         check_julia(av[2], av[3]);
     else

@@ -5,10 +5,10 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdio.h>
-# include "mlx.h"
-# include "mlx_int.h"
+# include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
 
-#define ARRAY_SIZE  5
+#define ARRAY_SIZE  1
 
 #define USAGE_MSG "Usage: ./fractol <type> [options]\n" \
                   "Available types:\n" \

@@ -1,18 +1,26 @@
-NAME = test
+NAME = fractol
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Imlx_linux
-SRC = main.c
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
+SRC = main.c draw_fractol.c utils.c
 OBJ = $(SRC:.c=.o)
 
+MLX_DIR = minilibx-linux
+MLX_LIB = $(MLX_DIR)/libmlx.a
+
+all: $(MLX_LIB) $(NAME)
+
+$(MLX_LIB):
+	@$(MAKE) -C $(MLX_DIR)
+
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) $(MLX_LIB) -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
+	@$(MAKE) clean -C $(MLX_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) clean -C $(MLX_DIR)
 
 re: fclean all
-
-all: $(NAME)
