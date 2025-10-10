@@ -55,7 +55,7 @@ typedef struct s_fractol
 	void		*mlx;
 	void		*win;
 	t_image		img;
-	t_data		julia_param;
+	t_data		data;
 	t_screen	screen;
 }	t_fractol;
 

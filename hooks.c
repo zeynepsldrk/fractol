@@ -49,7 +49,7 @@ void	zoom(t_fractol *fractol, int x, int y, double zoom_factor)
 	screen->re_max = mouse_re + (screen->re_max - mouse_re) * zoom_factor;
 	screen->im_min = mouse_im + (screen->im_min - mouse_im) * zoom_factor;
 	screen->im_max = mouse_im + (screen->im_max - mouse_im) * zoom_factor;
-	if (fractol->julia_param.c_real != 0 || fractol->julia_param.c_imag != 0)
+	if (fractol->data.c_real != 0 || fractol->data.c_imag != 0)
 		draw_julia(fractol, &fractol->img);
 	else
 		draw_mandelbrot(fractol, &fractol->img);
