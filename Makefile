@@ -1,5 +1,5 @@
 NAME = fractol
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
 SRC = main.c draw_fractol.c utils.c
 OBJ = $(SRC:.c=.o)
