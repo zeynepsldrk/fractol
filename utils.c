@@ -16,48 +16,63 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int is_number(char *str)
-{
-    int i = 0;
-    if (!str)
-        return 0;
-    if (str[0] == '-' || str[0] == '+')
-        i++;
-    if (str[i] == '\0')
-        return 0;
-    while (str[i])
-    {
-        if (!('0' <= str[i] && '9' >= str[i]))
-            return 0;
-        i++;
-    }
-    return 1;
-}
-
-int	ft_atoi(const char *str)
+int	is_double(char *str)
 {
 	int	i;
-	int	sign;
-	int	result;
+	int	dot;
 
-	sign = 1;
-	result = 0;
+	if (!str || !*str)
+		return (0);
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
+	dot = 0;
 	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-		if (str[i] == '-')
+		if (str[i] == '.')
 		{
-			sign = -1;
+			if (++dot > 1)
+				return (0);
 		}
+		else if (str[i] < '0' || str[i] > '9')
+			return (0);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	return (1);
+}
+
+double	ft_atof(const char *s)
+{
+	int		i;
+	int		sign;
+	double	result;
+	double	f;
+
+	i = 0;
+	result = 0.0;
+	f = 0.1;
+	sign = 1;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == ' ')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		result = result * 10 + (str[i] - '0');
+		if (s[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (sign * result);
+	while (s[i] >= '0' && s[i] <= '9')
+		result = result * 10 + (s[i++] - '0');
+	if (s[i] == '.')
+	{
+		i++;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			result += (s[i] - '0') * f;
+			f *= 0.1;
+			i++;
+		}
+	}
+	return (result * sign);
 }

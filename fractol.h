@@ -8,7 +8,7 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
-#define ARRAY_SIZE  1
+
 
 #define USAGE_MSG "Usage: ./fractol <type> [options]\n" \
                   "Available types:\n" \
@@ -32,34 +32,25 @@ typedef struct s_image
     int endian;
 } t_image;
 
-typedef struct julia
+typedef struct s_data
 {
-    double julia_c_real;
-    double julia_c_imag;
-    double julia_z_real;
-    double julia_z_imag;
-} t_julia;
-
-typedef struct mandelbrot
-{
-    double mandel_c_real;
-    double mandel_c_imag;
-    double mandel_z_real;
-    double mandel_z_imag;
-} t_mandelbrot;
+    double c_real;
+    double c_imag;
+    double z_real;
+    double z_imag;
+} t_data;
 
 typedef struct s_fractol
 {
     void *mlx;
     void *win;
     t_image img;
-    t_julia julia;
-    t_mandelbrot mandelbrot;
+    t_data data;
 } t_fractol;
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int is_number(char *str);
-int	ft_atoi(const char *str);
+int is_double(char *str);
+int	ft_atof(const char *str);
 void check_julia(char *number1, char *number2);
 void system_err_message(void);
 void usage_message(void);
