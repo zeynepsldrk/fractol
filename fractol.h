@@ -25,6 +25,9 @@
 # define IM_MIN			-2.0
 # define IM_MAX			2.0
 
+# define MANDELBROT		1
+# define JULIA			2
+
 typedef struct s_image
 {
 	void	*img;
@@ -57,8 +60,8 @@ typedef struct s_fractol
 	t_image		img;
 	t_data		data;
 	t_screen	screen;
+	int			fractal_type;
 }	t_fractol;
-
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		is_double(char *str);

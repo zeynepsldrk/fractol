@@ -21,6 +21,7 @@ void	check_julia(char *number1, char *number2)
 		write(2, "Error: Julia requires 2 numerical arguments\n", 45);
 		exit(EXIT_FAILURE);
 	}
+	fractol.fractal_type = JULIA;
 	fractol.data.c_real = ft_atof(number1);
 	fractol.data.c_imag = ft_atof(number2);
 	init_fractol(draw_julia, &fractol, "Julia");
@@ -32,6 +33,7 @@ int	main(int ac, char *av[])
 
 	if (ac == 2 && !ft_strncmp("mandelbrot", av[1], 11))
 	{
+		fractol.fractal_type = MANDELBROT;
 		fractol.data.c_real = 0;
 		fractol.data.c_imag = 0;
 		init_fractol(draw_mandelbrot, &fractol, "Mandelbrot");
