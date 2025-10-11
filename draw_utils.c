@@ -1,4 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/11 15:21:23 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/11 18:58:31 by zedurak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
+
+int	calculate_mandel_julia(t_data *data, int max_iter)
+{
+	int iter;
+	double temp;
+
+	iter = 0;
+	while (iter < max_iter)
+	{
+		temp = (pow(data->z_real, 2) - pow(data->z_imag, 2)) + data->c_real;
+		data->z_imag = (2 * data->z_real * data->z_imag) + data->c_imag;
+		data->z_real = temp;
+		if ((pow(data->z_real, 2)) + (pow(data->z_imag, 2)) >= 4.0)
+			return (iter);
+		iter++;
+	}
+	return (iter);
+}
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
@@ -9,41 +39,20 @@ void	put_pixel(t_image *img, int x, int y, int color)
 		return ;
 	offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
 	pixel = img->img_address + offset;
-	*(unsigned int *)pixel = color;
+	*(int *)pixel = color;
 }
 
-int	get_color(int iteration, int max_iter)
+int	get_color(int j, int max_iter)
 {
-	double	t;
-	int		r;
-	int		g;
-	int		b;
-
-	if (iteration == max_iter)
+	if (j == max_iter)
 		return (0x000000);
-	t = (double)iteration / (double)max_iter;
-	if (t < 0.16)
-	{
-		r = (int)(9 * (1 - t) * t * t * t * 255);
-		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-	}
-	else if (t < 0.42)
-	{
-		r = (int)(8.5 * (1 - t) * t * t * t * 255);
-		g = (int)(8.5 * (1 - t) * (1 - t) * t * t * 255);
-		b = (int)(9 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-	}
+	if (j % 2 == 1)
+		return (0x555555);
 	else
-	{
-		r = (int)(9 * (1 - t) * (1 - t) * t * t * 255);
-		g = (int)(15 * (1 - t) * t * t * t * 255);
-		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-	}
-	return ((r << 16) | (g << 8) | b);
+		return (0xcccccc);
 }
 
-void	map_pixel_to_data(int x, int y, t_screen screen, t_data *c)
+void	pixel_to_data(int x, int y, t_screen screen, t_data *c)
 {
 	double	re_factor;
 	double	im_factor;

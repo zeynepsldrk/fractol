@@ -22,8 +22,8 @@
 
 # define RE_MIN			-2.0
 # define RE_MAX			2.0
-# define IM_MIN			-2.0
-# define IM_MAX			2.0
+# define IM_MIN			-1.5
+# define IM_MAX			1.5
 
 # define MANDELBROT		1
 # define JULIA			2
@@ -76,12 +76,11 @@ void	draw_mandelbrot(t_fractol *fractol, t_image *image);
 void	draw_julia(t_fractol *fractol, t_image *image);
 void	put_pixel(t_image *img, int x, int y, int color);
 int		get_color(int iteration, int max_iter);
-void	map_pixel_to_data(int x, int y, t_screen screen, t_data *c);
+void	pixel_to_data(int x, int y, t_screen screen, t_data *c);
 int		close_all(t_fractol *fractol);
 int		press_esc(int keycode, t_fractol *fractol);
 int		move_mouse(int way, int x, int y, t_fractol *fractol);
 void	zoom(t_fractol *fractol, int x, int y, double zoom_factor);
-int		calculate_mandelbrot(t_data *data, int max_iter);
-int		calculate_julia(t_data *data, int max_iter);
+int		calculate_mandel_julia(t_data *data, int max_iter);
 
 #endif

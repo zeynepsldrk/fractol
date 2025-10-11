@@ -1,7 +1,7 @@
 NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
-SRC = main.c draw_fractol.c utils.c
+SRC = main.c draw_fractol.c utils.c draw_utils.c hooks.c 
 OBJ = $(SRC:.c=.o)
 
 MLX_DIR = minilibx-linux

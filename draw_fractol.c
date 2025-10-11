@@ -1,54 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_fractol.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/11 15:22:01 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/11 16:33:07 by zedurak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	draw_julia(t_fractol *fractol, t_image *image)
 {
-	int		x;
-	int		y;
-	t_data	data;
-	int		iterations;
-	int		color;
-
-	y = 0;
-	while (y < HEIGHT)
+	int x;
+	int y;
+	int iteration;
+	int color;
+	
+	iteration = 0;
+	x = 0;
+	while (x < WIDTH)
 	{
-		x = 0;
-		while (x < WIDTH)
+		y = 0;
+		while (y < HEIGHT)
 		{
-			map_pixel_to_data(x, y, fractol->screen, &data);
-			data.c_real = fractol->julia_param.c_real;
-			data.c_imag = fractol->julia_param.c_imag;
-			iterations = calculate_julia(&data, MAX_ITERATION);
-			color = get_color(iterations, MAX_ITERATION);
+			pixel_to_data(x, y, fractol->screen, &fractol->data);
+			iteration = calculate_mandel_julia(&fractol->data, MAX_ITERATION);
+			color = get_color(iteration, MAX_ITERATION);
 			put_pixel(image, x, y, color);
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 }
 
 void	draw_mandelbrot(t_fractol *fractol, t_image *image)
 {
-	int		x;
-	int		y;
-	t_data	data;
-	int		iterations;
-	int		color;
-
-	y = 0;
-	while (y < HEIGHT)
+	int x;
+	int y;
+	int iteration;
+	int color;
+	
+	iteration = 0;
+	x = 0;
+	while (x < WIDTH)
 	{
-		x = 0;
-		while (x < WIDTH)
+		y = 0;
+		while (y < HEIGHT)
 		{
-			map_pixel_to_data(x, y, fractol->screen, &data);
-			data.z_real = 0.0;
-			data.z_imag = 0.0;
-			iterations = calculate_mandelbrot(&data, MAX_ITERATION);
-			color = get_color(iterations, MAX_ITERATION);
+			pixel_to_data(x, y, fractol->screen, &fractol->data);
+			fractol->data.z_imag = 0.0;
+			fractol->data.z_real = 0.0;
+			iteration = calculate_mandel_julia(&fractol->data, MAX_ITERATION);
+			color = get_color(iteration, MAX_ITERATION);
 			put_pixel(image, x, y, color);
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 }
 
