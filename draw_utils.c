@@ -34,25 +34,50 @@ void	put_pixel(t_image *img, int x, int y, int color)
 {
 	char	*pixel;
 	int		offset;
+	int		bytes_per_pixel;
 
+	bytes_per_pixel = img->bits_per_pixel / 8;
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 		return ;
-	offset = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+	offset = (y * img->line_length) + (x * bytes_per_pixel);
 	pixel = img->img_address + offset;
-	*(int *)pixel = color;
+	*(unsigned int *)pixel = color;
 }
 
-int	get_color(int j, int max_iter)
+int	get_color(int iterastion, int max_iter)
 {
-	if (j == max_iter)
-		return (0x000000);
-	if (j % 2 == 1)
-		return (0x555555);
-	else
-		return (0xcccccc);
+	double norm;
+	
+    double norm = (double)iteration / MAX_ITER;
+    if (iteration >= MAX_ITER)
+        return 0x000000;  
+    int colors[8] = {
+        0xFF0000,
+        0xFF7F00,  
+        0xFFFF00,  
+        0x00FF00,  
+        0x0000FF,  
+        0x4B0082,  
+        0x9400D3,  
+        0xFF1493   
+    };
+    
+    int color_index = iteration % 8;
+    return (int)(colors[color_index] * norm);
 }
 
-void	pixel_to_data(int x, int y, t_screen screen, t_data *c)
+void	julia_pixel_to_data(int x, int y, t_screen screen, t_data *c)
+{
+	double	re_factor;
+	double	im_factor;
+
+	re_factor = (screen.re_max - screen.re_min) / (WIDTH - 1);
+	im_factor = (screen.im_max - screen.im_min) / (HEIGHT - 1);
+	c->z_real = screen.re_min + (x * re_factor);
+	c->z_imag = screen.im_max - (y * im_factor);
+}
+
+void mandel_pixel_to_data(int x, int y, t_screen screen, t_data *c)
 {
 	double	re_factor;
 	double	im_factor;
@@ -61,6 +86,4 @@ void	pixel_to_data(int x, int y, t_screen screen, t_data *c)
 	im_factor = (screen.im_max - screen.im_min) / (HEIGHT - 1);
 	c->c_real = screen.re_min + (x * re_factor);
 	c->c_imag = screen.im_max - (y * im_factor);
-	c->z_real = c->c_real;
-	c->z_imag = c->c_imag;
 }

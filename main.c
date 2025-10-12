@@ -46,9 +46,14 @@ int	main(int ac, char *av[])
 	if (ac == 2 && !ft_strncmp("mandelbrot", av[1], 11))
 	{
 		fractol.fractal_type = MANDELBROT;
-		fractol.data.c_real = 0;
-		fractol.data.c_imag = 0;
 		init_fractol(draw_mandelbrot, &fractol, "Mandelbrot");
+	}
+	else if (ac == 2 && !ft_strncmp("julia", av[1], 6))
+	{
+		fractol.fractal_type = JULIA;
+		fractol.data.c_real = -0.7;
+		fractol.data.c_imag = 0.27;
+		init_fractol(draw_julia, &fractol, "Julia");
 	}
 	else if (ac == 4 && !ft_strncmp("julia", av[1], 6))
 		check_julia(av[2], av[3]);
