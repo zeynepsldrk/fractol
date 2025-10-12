@@ -50,16 +50,14 @@ int	press_keys(int keycode, t_fractol *fractol)
 
 int	move_mouse(int way, int x, int y, t_fractol *fractol)
 {
-	double	zoom_factor;
-
-	zoom_factor = 1.0;
+	fractol->screen. = 1.0;
 	if (way == 4)
-		zoom_factor = 0.8;
+		fractol->screen. = 0.8;
 	else if (way == 5)
-		zoom_factor = 1.2;
+		fractol->screen. = 1.2;
 	else
 		return (0);
-	zoom(fractol, x, y, zoom_factor);
+	zoom(fractol, x, y, fractol->screen.);
 	return (0);
 }
 

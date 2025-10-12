@@ -51,6 +51,7 @@ typedef struct s_screen
 	double	re_max;
 	double	im_min;
 	double	im_max;
+	double	zoom_factor;
 }	t_screen;
 
 typedef struct s_fractol
