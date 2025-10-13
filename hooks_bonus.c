@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 15:21:40 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 18:32:09 by zedurak          ###   ########.fr       */
+/*   Created: 2025/10/13 14:43:13 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/13 16:51:12 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	redraw_fractal(t_fractol *fractol)
 {
@@ -68,10 +68,8 @@ void	zoom(t_fractol *fractol, int x, int y, double zoom_factor)
 	double	mouse_im;
 	double	interpolation;
 
-	(void)x;
-	(void)y;
-	a[0] = WIDTH / 2;
-	a[1] = HEIGHT / 2;
+	a[0] = x;
+	a[1] = y;
 	calculate_mouse_pos(fractol, a, &mouse_re, &mouse_im);
 	interpolation = 1.0 / zoom_factor;
 	apply_zoom(fractol, mouse_re, mouse_im, interpolation);

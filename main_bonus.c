@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 15:21:46 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 14:45:32 by zedurak          ###   ########.fr       */
+/*   Created: 2025/10/13 14:45:45 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/13 17:25:25 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static	void	print_error(void)
 {
@@ -68,6 +68,11 @@ int	main(int ac, char *av[])
 	}
 	else if (ac == 4 && !ft_strncmp("julia", av[1], 6))
 		check_julia(av[2], av[3]);
+	else if (ac == 2 && !ft_strncmp("tricorn", av[1], 8))
+	{
+		fractol.fractal_type = TRICORN;
+		init_fractol(draw_tricorn, &fractol, "Tricorn");
+	}
 	else
 		usage_message();
 	return (0);

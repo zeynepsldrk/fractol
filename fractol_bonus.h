@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 14:24:59 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 16:20:38 by zedurak          ###   ########.fr       */
+/*   Created: 2025/10/13 16:33:16 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/13 18:31:03 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,6 +31,7 @@
 
 # define MANDELBROT		1
 # define JULIA			2
+# define TRICORN		3
 
 typedef struct s_color
 {
@@ -94,5 +95,7 @@ int		move_mouse(int way, int x, int y, t_fractol *fractol);
 void	zoom(t_fractol *fractol, int x, int y, double zoom_factor);
 int		calculate_mandel_julia(t_data *data, int max_iter);
 void	redraw_fractal(t_fractol *fractol);
+int		calculate_tricorn(t_data *data, int max_iter);
+void	draw_tricorn(t_fractol *fractol, t_image *image);
 
 #endif

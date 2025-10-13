@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   draw_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 15:21:23 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 16:19:10 by zedurak          ###   ########.fr       */
+/*   Created: 2025/10/13 14:23:19 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/13 16:49:48 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	calculate_mandel_julia(t_data *data, int max_iter)
 {

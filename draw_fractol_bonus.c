@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_fractol.c                                     :+:      :+:    :+:   */
+/*   draw_fractol_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 15:22:01 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 17:28:25 by zedurak          ###   ########.fr       */
+/*   Created: 2025/10/13 14:17:04 by zedurak           #+#    #+#             */
+/*   Updated: 2025/10/13 14:17:39 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	draw_julia(t_fractol *fractol, t_image *image)
 {
