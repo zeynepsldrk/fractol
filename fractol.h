@@ -84,5 +84,8 @@ int		press_keys(int keycode, t_fractol *fractol);
 int		move_mouse(int way, int x, int y, t_fractol *fractol);
 void	zoom(t_fractol *fractol, int x, int y, double zoom_factor);
 int		calculate_mandel_julia(t_data *data, int max_iter);
+void	redraw_fractal(t_fractol *fractol);
+
+
 
 #endif

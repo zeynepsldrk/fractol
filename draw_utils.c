@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 15:21:23 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/11 18:58:31 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/13 13:53:25 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,23 @@ void	put_pixel(t_image *img, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-int	get_color(int iterastion, int max_iter)
+int	get_color(int iteration, int max_iter)
 {
-	double norm;
-	
-    double norm = (double)iteration / MAX_ITER;
-    if (iteration >= MAX_ITER)
+    if (iteration >= max_iter)
         return 0x000000;  
     int colors[8] = {
-        0xFF0000,
-        0xFF7F00,  
-        0xFFFF00,  
-        0x00FF00,  
-        0x0000FF,  
-        0x4B0082,  
-        0x9400D3,  
-        0xFF1493   
+        0xFF7F50,
+        0x3CB371, 
+        0x4169E1, 
+        0xFF8C00,  
+        0xDB7093,  
+        0xBA55D3,  
+        0x20B2AA,  
+        0xDAA520   
     };
     
     int color_index = iteration % 8;
-    return (int)(colors[color_index] * norm);
+    return (colors[color_index]);
 }
 
 void	julia_pixel_to_data(int x, int y, t_screen screen, t_data *c)
