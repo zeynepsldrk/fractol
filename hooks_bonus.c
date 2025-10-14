@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:43:13 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 16:51:12 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/14 12:55:48 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	redraw_fractal(t_fractol *fractol)
 {
 	if (fractol->fractal_type == JULIA)
 		draw_julia(fractol, &fractol->img);
+	else if (fractol->fractal_type == TRICORN)
+		draw_tricorn(fractol, &fractol->img);
 	else
 		draw_mandelbrot(fractol, &fractol->img);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img.img, 0, 0);

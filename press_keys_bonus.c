@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:49:35 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 14:50:03 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/14 13:52:16 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ static	void	move_left_right(int keycode, t_fractol *fractol, double move)
 	double	range_re;
 
 	range_re = fractol->screen.re_max - fractol->screen.re_min;
-	if (keycode == 65361)
-	{
-		fractol->screen.re_min -= range_re * move;
-		fractol->screen.re_max -= range_re * move;
-	}
-	else if (keycode == 65363)
+	if (keycode == 65361 || keycode == 97)
 	{
 		fractol->screen.re_min += range_re * move;
 		fractol->screen.re_max += range_re * move;
+	}
+	else if (keycode == 65363 || keycode == 100)
+	{
+		fractol->screen.re_min -= range_re * move;
+		fractol->screen.re_max -= range_re * move;
 	}
 }
 
@@ -44,15 +44,15 @@ static	void	move_up_down(int keycode, t_fractol *fractol, double move)
 	double	range_im;
 
 	range_im = fractol->screen.im_max - fractol->screen.im_min;
-	if (keycode == 65364)
-	{
-		fractol->screen.im_min -= range_im * move;
-		fractol->screen.im_max -= range_im * move;
-	}
-	else if (keycode == 65362)
+	if (keycode == 65364 || keycode == 115)
 	{
 		fractol->screen.im_min += range_im * move;
 		fractol->screen.im_max += range_im * move;
+	}
+	else if (keycode == 65362 || keycode == 119)
+	{
+		fractol->screen.im_min -= range_im * move;
+		fractol->screen.im_max -= range_im * move;
 	}
 }
 
