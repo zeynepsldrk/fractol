@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:49:35 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/14 13:52:16 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/14 16:21:34 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ int	press_keys(int keycode, t_fractol *fractol)
 		close_all(fractol);
 	else if (keycode == 65361 || keycode == 65363)
 		move_left_right(keycode, fractol, move_amount);
+	else if (keycode == 100 || keycode == 97)
+		move_left_right(keycode, fractol, move_amount);
 	else if (keycode == 65362 || keycode == 65364)
+		move_up_down(keycode, fractol, move_amount);
+	else if (keycode == 115 || keycode == 119)
 		move_up_down(keycode, fractol, move_amount);
 	else
 		return (0);

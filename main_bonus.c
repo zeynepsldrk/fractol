@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:45 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/13 17:25:25 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/14 15:44:27 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ static	void	print_error(void)
 {
 	write(1, "Usage: ./fractol <type> [options]\n", 34);
 	write(1, "Available types:\n", 17);
-	write(1, "  mandelbrot\n", 12);
+	write(1, "  mandelbrot\n", 13);
 	write(1, "  julia <real> <imag>\n", 22);
+	write(1, "  tricorn\n", 10);
 	write(1, "Examples:\n", 10);
 	write(1, "  ./fractol mandelbrot\n", 23);
-	write(1, "  ./fractol julia -0.7 0.27015\n", 30);
+	write(1, "  ./fractol julia -0.7 0.27015\n", 31);
+	write(1, "  ./fractol tricorn\n", 19);
 }
 
 void	usage_message(void)
