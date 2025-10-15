@@ -6,7 +6,7 @@
 /*   By: zedurak <zedurak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:30:24 by zedurak           #+#    #+#             */
-/*   Updated: 2025/10/15 20:32:48 by zedurak          ###   ########.fr       */
+/*   Updated: 2025/10/15 20:53:30 by zedurak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ int	calculate_tricorn(t_data *data, int max_iter)
 		temp = ((data->z_real * data->z_real) - (data->z_imag * data->z_imag)) + data->c_real;
 		data->z_imag = (-2 * data->z_real * data->z_imag) + data->c_imag;
 		data->z_real = temp;
-		if ((->z_real * data->z_real) + (data->z_imag * data->z_imag) >= 4.0)
+		if ((data->z_real * data->z_real) + (data->z_imag * data->z_imag) >= 4.0)
 			return (iter);
 		iter++;
 	}
 	return (iter);
 }
+
+
